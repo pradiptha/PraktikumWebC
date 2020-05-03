@@ -20,6 +20,25 @@ body{
     font-family: 'Varela Round', sans-serif;
     font-size: 13px;
 }
+.pagination {
+    display: inline-block;
+    margin-left: 42%;
+}
+.pagination a {
+    margin-top: 10px;
+    font-size: 12px;
+    background-color: #ffff;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.pagination a.active {
+    background-color: #435d7d;
+    color: white;
+}
+.pagination a:hover:not(.active) {background-color: #435d7d; color: white}
 a.btn {
     -webkit-appearance: button;
     -moz-appearance: button;

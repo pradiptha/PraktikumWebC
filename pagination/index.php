@@ -2,6 +2,7 @@
 require 'function.php';
 if (isset($_GET["q"])) {
     $key = $_GET["q"];
+    $page = 0;
     $mahasiswa = query("SELECT * FROM mahasiswa WHERE nama LIKE '%$key%' OR nim LIKE '%$key%' OR email LIKE '%$key%' OR fakultas LIKE '%$key%' ORDER BY nim");
 } else {
     $halaman = 5;
@@ -88,6 +89,13 @@ if (isset($_GET["q"])) {
                     </tbody>
                 </table>
             </div>
+            <?php if($page): ?>
+            <div class="pagination">
+              <?php for ($i=1; $i<=$pages ; $i++):?>
+              <a href="?p=<?= $i; ?>" class="<?php if($i==$page){echo("active");}?>"><?= $i; ?></a>
+              <?php endfor ?>
+            </div>
+            <?php endif ?>
         </div>
     </div>
 </body>
