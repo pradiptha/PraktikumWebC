@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Simple ToDo App</title>
+	<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="main-header">
+				<h1>Simple ToDo App</h1>
+			</div>
+			<div class="sub-header">
+				<input id="new-task" type="text">
+				<button class="btn">Add</button>
+			</div>
+		</div>
+		<div class="task">
+			<ul id="task-list">
+				<li id="etask"><h3>You don't have task today</h3></li>
+			</ul>
+		</div>
+		<div class="completed">
+			<ul id="completed-task">
+				<li id="ctask" class="hidden"><h3>Completed Task</h3></li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

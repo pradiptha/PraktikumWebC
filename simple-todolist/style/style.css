@@ -1,0 +1,125 @@
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+.cf {
+    *zoom: 1;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: #eaeaea;
+    font-family: 'Roboto', sans-serif;        
+    font-size: 12px;
+}
+.container{
+    background-color: #ffffff;
+    width: 50%;
+    margin: 30px auto;
+    border-radius: 5px;
+}
+.header{
+    color: #ffffff;
+}
+.main-header{
+    border-radius: 5px 5px 0 0;
+    padding: 20px 10px;
+    background-color: #173254;
+}
+.sub-header{
+    padding: 10px;
+    background-color: #69A8A6;
+}
+button {
+    margin-left: 10px;
+    background: #ffffff;
+    color: #000000;
+    border-radius: 5px;
+    border: none;
+    width: 60px;
+    padding: 8px;
+}
+button:hover {
+  background-color: #F8F1D8;
+}
+.task{
+    padding: 10px;
+}
+.completed{
+    padding: 10px;
+}
+.hidden{
+    display: none;
+}
+input[type="text"] {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 5px;
+  color: #888;
+}
+/* New Task */
+label[for='new-task'] {
+  display: block;
+  margin: 0 0 20px;
+}
+input#new-task {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 8px;
+    width: 300px;
+}
+p > button:hover {
+  color: #0FC57C;
+}
+
+/* Task list */
+li {
+  overflow: hidden;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+li > input[type="checkbox"] {
+  margin: 0 10px;
+  position: relative;
+}
+li > label {
+  font-size: 18px;
+  line-height: 40px;
+  width: 300px;
+  padding: 0 0 0 11px;
+  overflow:hidden;
+}
+li >  input[type="text"] {
+  width: 300px;
+}
+li > .delete:hover {
+  color: #CF2323;
+}
+
+/* Completed */
+#selesai label {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Edit Task */
+ul li input[type=text] {
+  display:none;
+}
+
+ul li.editMode input[type=text] {
+  display:inline-block;
+}
+
+ul li.editMode label {
+  display:none;
+}
