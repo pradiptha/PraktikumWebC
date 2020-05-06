@@ -1,9 +1,15 @@
 <?php
 require 'function.php';
+$page = 0;
+$sort = 'nim';
+$order = 'asc';
 if (isset($_GET["q"])) {
     $key = $_GET["q"];
-    $page = 0;
     $mahasiswa = query("SELECT * FROM mahasiswa WHERE nama LIKE '%$key%' OR nim LIKE '%$key%' OR email LIKE '%$key%' OR fakultas LIKE '%$key%' ORDER BY nim");
+} else if (isset($_GET['sort']) && isset($_GET['order'])) {
+    $sort = $_GET['sort'];
+    $order = $_GET['order'];
+    $mahasiswa = query("SELECT * FROM mahasiswa ORDER BY $sort $order");
 } else {
     $halaman = 5;
     $page = isset($_GET["p"]) ? (int) $_GET["p"] : 1;
@@ -41,15 +47,39 @@ if (isset($_GET["q"])) {
                     <a class="btn-add bg-green" href="add.php"><i class="fas fa-plus-circle fa-lg"></i>Tambah Data Mahasiswa</a>
                 </div>
             </div>
-            <div class="search-wrapper">
-                <div class="field">
-                    <div class="search-field">
+            <div class="search-wrapper ">
+                <div class=" field cf">
+                    <div class="search-field f-left" style="width: 50%;">
                         <form action="" method="get">
                             <label for="cari" style="display:block;">Cari</label>
                             <input type="text" name="q" placeholder="<?php if (isset($_GET["q"])) echo $_GET["q"]; ?>">
-                            <input class="btn-search" type="submit" value="Search" name="search">
+                            <!-- <input class="btn-search" type="submit" value="Search" name="search"> -->
+                            <button class="btn-search" type="submit">Search</button>
                             <!-- <input class="btn-reset" type="submit" value="Clear" name="reset" onclick="location.href='index.php';"> -->
                             <a href="./" class="btn">Clear</a>
+                        </form>
+                    </div>
+                    <div class="sort-field f-left" style="width: 50%">
+                        <form action="" method="get" class="cf" style="margin-left: 166px;">
+                            <div class="f-left">
+                                <label for="sort" style="display:block;">Sort</label>
+                                <select name="sort" id="sort" style="width: 150px; margin-right: 3px">
+                                    <option value="nim" <?= ($sort == "nim" ? 'selected' : ''); ?>>Nim</option>
+                                    <option value="nama" <?= ($sort == "nama" ? 'selected' : ''); ?>>Nama</option>
+                                    <option value="jenisKelamin" <?= ($sort == "jenisKelamin" ? 'selected' : ''); ?>>Jenis Kelamin</option>
+                                    <option value="tglLahir" <?= ($sort == "tglLahir" ? 'selected' : ''); ?>>Tanggal Lahir</option>
+                                    <option value="email" <?= ($sort == "email" ? 'selected' : ''); ?>>Email</option>
+                                    <option value="fakultas" <?= ($sort == "fakultas" ? 'selected' : ''); ?>>Fakultas</option>
+                                </select>
+                            </div>
+                            <div class="f-left">
+                                <label for="order" style="display:block;">Order By</label>
+                                <select name="order" id="order" style="width: 150px;">
+                                    <option value="asc" <?= ($order == "asc" ? 'selected' : ''); ?>>Ascending</option>
+                                    <option value="desc" <?= ($order == "desc" ? 'selected' : ''); ?>>Descending</option>
+                                </select>
+                                <button class="btn-search" type="submit">Sort</button>
+                            </div>
                         </form>
                     </div>
                 </div>
